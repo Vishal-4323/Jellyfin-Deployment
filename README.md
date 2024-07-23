@@ -13,7 +13,7 @@
 - Then, copy files from my local system to EC2 instance using **scp** command.
 - After, created a dockerfile build jellyfin image and add files from EC2 instance to docker image.
 - To run docker commands it needs to use sudo. If you want to allow non-priviledged users to run docker commands use following documentation https://docs.docker.com/engine/install/linux-postinstall/. 
-- After, Created the image using following command.
+- After, Created the image by executing the command.
 ```docker
 sudo docker build -t myapp .
 ```
@@ -22,16 +22,16 @@ sudo docker build -t myapp .
 ```docker
 sudo docker images
 ```
-- After, created container using following command.
+- After, created container with the command.
 ```docker
 sudo docker run -d -p 8096:8096 myapp
 ```
 - 'docker run' command is used to start and run a new container. '-d' option stands for detached mode. It runs the container in background. '-p' option is used to map ports between the host machine and the container. myapp is the docker image used to create container.
-- Then, check the container is created or not using following command.
+- Then, check the container is created or not by running the command.
 ```docker
 sudo docker ps
 ```
 
 - After, I access the jellyfin using the ip address of my EC2 instance and the port number.
 - http://ip_address:8096
-- But, what's the problem here it is if you want to add new files you need to create new image and container again. That's the reason we can use build mounts in docker.
+- But, what's the problem here it is if you want to add new files you need to create new image and container again. That's the reason we can use bind mounts in docker.
